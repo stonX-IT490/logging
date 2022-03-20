@@ -4,7 +4,7 @@
 logDir='/var/log/'$1
 logName=$1
 
-touch /var/log/logCentral/${logName}
+touch /var/logCentral/${logName}
 
 # debugging
 echo ${logName}
