@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # SEND: watch for modification to logfile then run sendLog()
-./logCentral.sh ufw.log &
-./logCentral.sh messages &
-./logCentral.sh syslog &
-./logCentral.sh nginx/error.log &
+nohup bash logCentral.sh ufw.log &
+nohup bash logCentral.sh messages &
+nohup basg logCentral.sh syslog &
+nohup bash logCentral.sh nginx/error.log &
 
 # RECEIVE: run php receiveLog for each logfile
-php receiveLog.php ufw.log &
-php receiveLog.php messages &
-php receiveLog.php syslog &
-php receiveLog.php nginx/error.log &
+nohup php receiveLog.php ufw.log &
+nohup php receiveLog.php messages &
+nohup php receiveLog.php syslog &
+nohup php receiveLog.php nginx/error.log
