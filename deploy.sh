@@ -21,13 +21,6 @@ sudo mkdir -p /var/log/mysql
 # systemd
 pwd=`pwd`'/logging'
 
-startLogger="#!/bin/bash
-cd $pwd
-./autoLog.sh"
-
-echo "$startLogger" > $pwd/startLogger.sh
-chmod +x $pwd/startLogger.sh
-
 # Create serviceAutoLog in systemd
 serviceAutoLog="[Unit]
 Description=Log File Modifcation Watchdog
@@ -35,7 +28,7 @@ Description=Log File Modifcation Watchdog
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/php -f $pwd/startLogger.sh
+ExecStart=/usr/bin/bash -f $pwd/autoLog.sh
 
 [Install]
 WantedBy=multi-user.target"
