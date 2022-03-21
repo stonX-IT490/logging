@@ -23,7 +23,7 @@ pwd=`pwd`'/logging'
 
 startLogger="#!/bin/bash
 cd $pwd
-./autoLog.sh"
+sudo ./autoLog.sh"
 
 echo "$startLogger" > $pwd/startLogger.sh
 chmod +x $pwd/startLogger.sh
