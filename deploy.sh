@@ -31,7 +31,7 @@ Restart=always
 ExecStart=/usr/bin/php -f $pwd/autoLog.sh
 
 [Install]
-WantedBy=milti=user.target"
+WantedBy=multi-user.target"
 
 echo "$serviceAutoLog" > rmq-autoLog.service
 
