@@ -10,6 +10,16 @@ cd ~/
 
 # Setup Central Logging
 sudo mkdir /var/logCentral
+sudo mkdir /var/logCentral/nginx
+sudo mkdir /var/logCentral/rabbitmq
+sudo mkdir /var/logCentral/apt
+sudo mkdir /var/logCentral/mysql
+
+sudo mkdir /var/log/nginx
+sudo mkdir /var/log/rabbitmq
+sudo mkdir /var/log/mysql
+
+# systemd
 pwd=`pwd`'/logging'
 
 # Create serviceAutoLog in systemd
