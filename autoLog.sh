@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # RECEIVE: run php receiveLog for each logfile
+sleep 25s
 php receiveLog.php ufw.log &>> /var/log/rabbitmq/receiveLog.log &
 php receiveLog.php messages &>> /var/log/rabbitmq/receiveLog.log &
 php receiveLog.php syslog &>> /var/log/rabbitmq/receiveLog.log &
@@ -17,8 +18,8 @@ php receiveLog.php mysql/mariadb.err &>> /var/log/rabbitmq/receiveLog.log &
 
 php receiveLog.php rabbitmq/receiveLog.log &>> /dev/null &
 
-
 # SEND: watch for modification to logfile then run sendLog()
+sleep 1s
 ./logCentral.sh ufw.log &>> /var/log/rabbitmq/logCentral.log &
 ./logCentral.sh messages &>> /var/log/rabbitmq/logCentral.log &
 ./logCentral.sh daemon.log &>> /var/log/rabbitmq/logCentral.log &
