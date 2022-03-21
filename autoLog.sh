@@ -34,6 +34,3 @@ php receiveLog.php rabbitmq/receiveLog.log &>> /dev/null &
 ./logCentral.sh mysql/mariadb.err &>> /var/log/rabbitmq/logCentral.log &
 
 ./logCentral.sh daemon.log &> /dev/null &
-
-
-mysql/mariadb.err
