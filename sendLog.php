@@ -11,7 +11,6 @@ $connection = new AMQPStreamConnection('10.4.90.102', 5672, 'log', 'stonx_log', 
 $channel = $connection->channel();
 
 $channel->exchange_declare($exchange, 'fanout', false, false, false);
-$channel->queue_declare('log', false, true, false, false);
 
 $file = escapeshellarg( $dir );
 $last_line = `tail -n 1 $file`;

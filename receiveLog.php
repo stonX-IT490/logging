@@ -11,7 +11,7 @@ $channel = $connection->channel();
 $channel->exchange_declare($exchange, 'fanout', false, false, false);
 
 //param: queue,,durable,autodelete,
-list($queue_name, ,) = $channel->queue_declare('log', false, true, false, false);
+list($queue_name, ,) = $channel->queue_declare("", false, false, true, false);
 
 $channel->queue_bind($queue_name, $exchange);
 
@@ -19,10 +19,10 @@ echo " [*] Waiting for logs. To exit press CTRL+C\n";
 
 
 $callback = function ($msg) {
-        echo ' [x] Received ', "\n";
+        echo ' [x] Received ';
         global $exchange;
         $file_name = "/var/logCentral/".$exchange;
-        echo $file_name;
+        echo $file_name, "\n";
         $logFile = fopen($file_name, 'a') or die('Cannot open file: '.$file_name); 
         fwrite($logFile, $msg->body);
         fclose($logFile);
