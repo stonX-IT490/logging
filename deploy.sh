@@ -33,3 +33,8 @@ ExecStart=/usr/bin/php -f $pwd/autoLog.sh
 [Install]
 WantedBy=milti=user.target"
 
+echo "$serviceAutoLog" > rmq-autoLog.service
+
+sudo cp rmq-autoLog.service /etc/systemd/system/
+sudo systemctl start rmq-autoLog
+sudo systemctl enable rmq-autoLog
