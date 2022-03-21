@@ -10,14 +10,14 @@ $dir = '/var/log/'.$exchange;
 $connection = new AMQPStreamConnection('10.4.90.102', 5672, 'log', 'stonx_log', 'logHost');
 $channel = $connection->channel();
 
-$channel->exchange_declare(logs, 'fanout', false, false, false);
+$channel->exchange_declare('logs', 'fanout', false, false, false);
 
 $file = escapeshellarg( $dir );
 $last_line = `tail -n 1 $file`;
 
 $msg = new AMQPMessage($last_line);
 
-$channel->basic_publish($msg, $exchange);
+$channel->basic_publish($msg, 'logs');
 
 echo ' [x] Sent ', $dir, "\n";
 $channel->close();
