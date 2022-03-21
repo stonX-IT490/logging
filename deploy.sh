@@ -9,15 +9,14 @@ composer update
 cd ~/
 
 # Setup Central Logging
-sudo mkdir /var/logCentral
-sudo mkdir /var/logCentral/nginx
-sudo mkdir /var/logCentral/rabbitmq
-sudo mkdir /var/logCentral/apt
-sudo mkdir /var/logCentral/mysql
+sudo mkdir -p /var/logCentral/nginx
+sudo mkdir -p /var/logCentral/rabbitmq
+sudo mkdir -p /var/logCentral/apt
+sudo mkdir -p /var/logCentral/mysql
 
-sudo mkdir /var/log/nginx
-sudo mkdir /var/log/rabbitmq
-sudo mkdir /var/log/mysql
+sudo mkdir -p /var/log/nginx
+sudo mkdir -p /var/log/rabbitmq
+sudo mkdir -p /var/log/mysql
 
 # systemd
 pwd=`pwd`'/logging'
