@@ -32,7 +32,7 @@ chmod +x $pwd/startLogger.sh
 serviceAutoLog="[Unit]
 Description=Log File Modifcation Watchdog
 [Service]
-Type=simple
+Type=forking
 Restart=always
 ExecStart=/usr/bin/bash -f $pwd/startLogger.sh
 [Install]
