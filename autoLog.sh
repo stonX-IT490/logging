@@ -13,6 +13,7 @@ php receiveLog.php rabbitmq/rabbitmq-server.error.log &>> /var/log/rabbitmq/rece
 php receiveLog.php dpkg.log &>> /var/log/rabbitmq/receiveLog.log &
 php receiveLog.php alternatives.log &>> /var/log/rabbitmq/receiveLog.log &
 php receiveLog.php kern.log &>> /var/log/rabbitmq/receiveLog.log &
+php receiveLog.php mysql/mariadb.err &>> /var/log/rabbitmq/receiveLog.log &
 
 php receiveLog.php rabbitmq/receiveLog.log &>> /dev/null &
 
@@ -30,5 +31,9 @@ php receiveLog.php rabbitmq/receiveLog.log &>> /dev/null &
 ./logCentral.sh dpkg.log &>> /var/log/rabbitmq/logCentral.log &
 ./logCentral.sh alternatives.log &>> /var/log/rabbitmq/logCentral.log &
 ./logCentral.sh kern.log &>> /var/log/rabbitmq/logCentral.log &
+./logCentral.sh mysql/mariadb.err &>> /var/log/rabbitmq/logCentral.log &
 
 ./logCentral.sh daemon.log &> /dev/null &
+
+
+mysql/mariadb.err
