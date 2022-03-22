@@ -12,6 +12,6 @@ sudo touch /var/log/${logName}
 
 # check for modifications to logName
 while true; do
-    sudo inotifywait -e modify ${logDir}
+    sudo inotifywait -e modify ${logDir} &> /dev/null
     sudo php sendLog.php ${logName}
 done
