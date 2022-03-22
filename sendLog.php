@@ -11,7 +11,7 @@ $dir = '/var/log/'.$exchange;
 $connection = new AMQPStreamConnection('10.4.90.102', 5672, 'log', 'stonx_log', 'logHost');
 $channel = $connection->channel();
 
-$channel->exchange_declare($exchange, 'fanout', false, false, false);
+$channel->exchange_declare($exchange, 'fanout', false, true, false);
 $channel->queue_declare($queue, false, true, false, false);
 
 $file = escapeshellarg( $dir );

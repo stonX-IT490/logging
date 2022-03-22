@@ -16,7 +16,7 @@ php receiveLog.php alternatives.log &>> /var/log/rabbitmq/autoLog.log &
 php receiveLog.php kern.log &>> /var/log/rabbitmq/autoLog.log &
 php receiveLog.php mysql/mariadb.err &>> /var/log/rabbitmq/autoLog.log &
 
-php receiveLog.php rabbitmq/autoLog.log &>> /dev/null &
+php receiveLog.php rabbitmq/autoLog.log &> /dev/null &
 
 # SEND: watch for modification to logfile then run sendLog()
 sleep 1s
