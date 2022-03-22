@@ -7,14 +7,8 @@ composer require php-amqplib/php-amqplib
 composer update
 
 # Setup Central Logging
-sudo mkdir -p /var/logCentral/nginx
-sudo mkdir -p /var/logCentral/rabbitmq
-sudo mkdir -p /var/logCentral/apt
-sudo mkdir -p /var/logCentral/mysql
-
-sudo mkdir -p /var/log/nginx
-sudo mkdir -p /var/log/rabbitmq
-sudo mkdir -p /var/log/mysql
+sudo mkdir -p /var/logCentral/{nginx,rabbitmq,apt,mysql}
+sudo mkdir -p /var/log/{nginx,rabbitmq,mysql}
 
 # systemd
 pwd=`pwd`
