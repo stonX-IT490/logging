@@ -20,8 +20,9 @@ serviceAutoLog="[Unit]
 Description=RMQ Logger Service
 
 [Service]
-Type=forking
+Type=simple
 Restart=always
+WorkingDirectory=$pwd
 ExecStart=/usr/bin/bash -f $pwd/autoLog.sh
 User=root
 Group=root
@@ -34,4 +35,3 @@ echo "$serviceAutoLog" > rmq-autoLog.service
 sudo cp rmq-autoLog.service /etc/systemd/system/
 sudo systemctl start rmq-autoLog
 sudo systemctl enable rmq-autoLog
-cd ~/
