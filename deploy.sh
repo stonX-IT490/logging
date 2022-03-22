@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # Composer
-cd ~/logging/
+cd ~/logging
 sudo wget -O composer-setup.php https://getcomposer.org/installer
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 composer require php-amqplib/php-amqplib
 composer update
-cd ~/
 
 # Setup Central Logging
 sudo mkdir -p /var/logCentral/nginx
@@ -19,14 +18,9 @@ sudo mkdir -p /var/log/rabbitmq
 sudo mkdir -p /var/log/mysql
 
 # systemd
-pwd=`pwd`'/logging'
+pwd=`pwd`
 
-startLogger="#!/bin/bash
-cd $pwd
-sudo ./autoLog.sh"
-
-echo "$startLogger" > $pwd/startLogger.sh
-chmod +x $pwd/startLogger.sh
+chmod +x $pwd/autoLog.sh
 
 # Create serviceAutoLog in systemd
 serviceAutoLog="[Unit]
@@ -34,7 +28,7 @@ Description=rmq startLogger Daemon
 [Service]
 Type=forking
 Restart=always
-ExecStart=/usr/bin/bash -f $pwd/startLogger.sh
+ExecStart=/usr/bin/bash -f $pwd/autoLog.sh
 [Install]
 WantedBy=multi-user.target"
 
@@ -43,3 +37,4 @@ echo "$serviceAutoLog" > rmq-autoLog.service
 sudo cp rmq-autoLog.service /etc/systemd/system/
 sudo systemctl start rmq-autoLog
 sudo systemctl enable rmq-autoLog
+cd ~/
