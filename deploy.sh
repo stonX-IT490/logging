@@ -24,11 +24,15 @@ chmod +x $pwd/autoLog.sh
 
 # Create serviceAutoLog in systemd
 serviceAutoLog="[Unit]
-Description=rmq startLogger Daemon
+Description=RMQ Logger Service
+
 [Service]
 Type=forking
 Restart=always
 ExecStart=/usr/bin/bash -f $pwd/autoLog.sh
+User=root
+Group=root
+
 [Install]
 WantedBy=multi-user.target"
 
