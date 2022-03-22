@@ -3,7 +3,10 @@
 require_once __DIR__ . '/vendor/autoload.php';
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
+$date = date('m/d/Y H:i:s', time());
 $exchange = $argv[1];
+$queue = gethostname().'-'.$exchange;
+$dir = "/var/logCentral/".$exchange;
 
 $connection = new AMQPStreamConnection('10.4.90.102', 5672, 'log', 'stonx_log', 'logHost');
 $channel = $connection->channel();
@@ -11,19 +14,19 @@ $channel = $connection->channel();
 $channel->exchange_declare($exchange, 'fanout', false, false, false);
 
 //param: queue,,durable,autodelete,
-list($queue_name, ,) = $channel->queue_declare("", false, false, true, false);
+list($queue_name, ,) = $channel->queue_declare($queue, false, true, false, false);
 
 $channel->queue_bind($queue_name, $exchange);
 
-echo " [*] Waiting for logs. To exit press CTRL+C\n";
-
+echo $date,' ',$queue," Receiver Started \n";
 
 $callback = function ($msg) {
-        echo ' [x] Received ';
         global $exchange;
-        $file_name = "/var/logCentral/".$exchange;
-        echo $file_name, "\n";
-        $logFile = fopen($file_name, 'a') or die('Cannot open file: '.$file_name); 
+        $date = date('m/d/Y H:i:s', time());
+        global $dir;
+        global $queue;
+        echo $date,' ',$queue,' RECEIVED ', $dir, "\n";
+        $logFile = fopen($dir, 'a') or die('Cannot open file: '.$dir); 
         fwrite($logFile, $msg->body);
         fclose($logFile);
 
