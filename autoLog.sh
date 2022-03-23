@@ -8,7 +8,6 @@ php receiveLog.php syslog &>> /var/log/rabbitmq/autoLog.log &
 php receiveLog.php daemon.log &>> /var/log/rabbitmq/autoLog.log &
 php receiveLog.php nginx/error.log &>> /var/log/rabbitmq/autoLog.log &
 php receiveLog.php apt/term.log &>> /var/log/rabbitmq/autoLog.log &
-# php receiveLog.php rabbitmq/rabbit@hippity-hopper.log &>> /var/log/rabbitmq/autoLog.log &
 php receiveLog.php rabbitmq/rabbitmq-server.log &>> /var/log/rabbitmq/autoLog.log &
 php receiveLog.php rabbitmq/rabbitmq-server.error.log &>> /var/log/rabbitmq/autoLog.log &
 php receiveLog.php dpkg.log &>> /var/log/rabbitmq/autoLog.log &
@@ -18,6 +17,7 @@ php receiveLog.php mysql/mariadb.err &>> /var/log/rabbitmq/autoLog.log &
 
 php receiveLog.php rabbitmq/autoLog.log &> /dev/null &
 
+
 # SEND: watch for modification to logfile then run sendLog()
 sleep 1s
 ./logCentral.sh ufw.log &>> /var/log/rabbitmq/autoLog.log &
@@ -25,7 +25,6 @@ sleep 1s
 ./logCentral.sh daemon.log &>> /var/log/rabbitmq/autoLog.log &
 ./logCentral.sh nginx/error.log &>> /var/log/rabbitmq/autoLog.log &
 ./logCentral.sh apt/term.log &>> /var/log/rabbitmq/autoLog.log &
-# ./logCentral.sh rabbitmq/rabbit@hippity-hopper.log &>> /var/log/rabbitmq/autoLog.log &
 ./logCentral.sh rabbitmq/rabbitmq-server.log &>> /var/log/rabbitmq/autoLog.log &
 ./logCentral.sh rabbitmq/rabbitmq-server.error.log &>> /var/log/rabbitmq/autoLog.log &
 ./logCentral.sh dpkg.log &>> /var/log/rabbitmq/autoLog.log &
