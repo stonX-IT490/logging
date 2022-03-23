@@ -20,7 +20,7 @@ serviceAutoLog="[Unit]
 Description=RMQ Logger Service
 
 [Service]
-Type=simple
+Type=forking
 Restart=always
 WorkingDirectory=$pwd
 ExecStart=/usr/bin/bash -f $pwd/autoLog.sh
