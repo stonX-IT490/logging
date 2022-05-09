@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cluster=""
+read -p "Which cluster? (prod, qa, dev) " cluster
+
 # Composer
 sudo wget -O composer-setup.php https://getcomposer.org/installer
 sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
@@ -38,6 +41,7 @@ sudo systemctl start rmq-autoLog
 sudo systemctl enable rmq-autoLog
 
 # Create failover in systemd
+if [ $cluster == "prod" ]; then
 failover="[Unit]
 Description=RMQ Failover Service
 
@@ -57,3 +61,4 @@ echo "$failover" > rmq-failover.service
 sudo cp rmq-failover.service /etc/systemd/system/
 sudo systemctl start rmq-failover
 sudo systemctl enable rmq-failover
+fi
