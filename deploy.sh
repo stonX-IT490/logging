@@ -61,4 +61,7 @@ echo "$failover" > rmq-failover.service
 sudo cp rmq-failover.service /etc/systemd/system/
 sudo systemctl start rmq-failover
 sudo systemctl enable rmq-failover
+else
+sudo rm /etc/systemd/system/rmq-failover.service
+sudo systemctl disable rmq-failover
 fi
