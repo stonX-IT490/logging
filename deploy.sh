@@ -37,7 +37,7 @@ sudo cp rmq-autoLog.service /etc/systemd/system/
 sudo systemctl start rmq-autoLog
 sudo systemctl enable rmq-autoLog
 
-# Create service in systemd
+# Create failover in systemd
 failover="[Unit]
 Description=RMQ Failover Service
 
