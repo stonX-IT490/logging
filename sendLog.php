@@ -8,7 +8,7 @@ $exchange = $argv[1];
 $queue = gethostname().'-'.$exchange;
 $dir = '/var/log/'.$exchange;
 
-$connection = new AMQPStreamConnection('10.4.90.102', 5672, 'log', 'stonx_log', 'logHost');
+$connection = new AMQPStreamConnection('broker', 5672, 'log', 'stonx_log', 'logHost');
 $channel = $connection->channel();
 
 $channel->exchange_declare($exchange, 'fanout', false, true, false);
