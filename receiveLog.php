@@ -32,7 +32,7 @@ $callback = function ($msg) {
 
 };
 
-$channel->basic_consume($queue_name, '', false, true, false, false, $callback);
+$channel->basic_consume($queue_name, '', false, false, false, false, $callback);
 
 while ($channel->is_open()) {
     $channel->wait();
